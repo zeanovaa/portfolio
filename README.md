@@ -1,6 +1,8 @@
 # Humaira Zeanova | Data Analyst Portfolio
-Welcome to my personal portfolio website! This repository houses the source code for my portfolio, showcasing my projects in **Statistics, Deep Learning, Spatial Analysis and Time Series Analysis**.
+Welcome to my personal portfolio website! This repository houses the source code for my portfolio, showcasing my projects in **Statistics, Deep Learning, Business Intellegence, Spatial Analysis and many more!**.
+
 🔗 **View Portfolio:** https://zeanovaa.github.io/portfolio/
+
 ## 📌 Overview
 This portfolio is designed to be a clean, modern, and professional showcase of my technical skills and academic work. It features a responsive design, interactive elements, and detailed project documentation.
 ### Key Features
