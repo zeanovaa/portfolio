@@ -1,0 +1,1358 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #4A90E2;
+    --primary-rgb: 74, 144, 226;
+    --bg-color: #121212;
+    --surface-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --font-serif: 'Playfair Display', serif;
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+    --blur-strength: 12px;
+    --transition-speed: 0.3s;
+    --container-width: 1200px;
+    --border-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Utilities */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #fff 0%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+/* Sticky Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(var(--blur-strength));
+    border-bottom: 1px solid var(--surface-border);
+    padding: 1rem 0;
+    transition: all var(--transition-speed);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color var(--transition-speed);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color);
+}
+
+/* Sections */
+section {
+    padding: 100px 0;
+    scroll-margin-top: 100px;
+    /* Offset for sticky navbar */
+}
+
+#publications {
+    padding-bottom: 15rem;
+    /* Significant separation from Contact section */
+}
+
+#contact {
+    padding-top: 50px;
+    /* Reduced from default 100px to position higher */
+}
+
+.projects-section {
+    padding-top: 0;
+    /* Reduce gap to match Publications preference */
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 70px;
+    /* Offset for navbar */
+    background: radial-gradient(circle at 50% 50%, rgba(74, 144, 226, 0.1) 0%, transparent 50%);
+    overflow: hidden;
+    /* Ensure no scrollbars if possible */
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-tagline {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(74, 144, 226, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(74, 144, 226, 0.2);
+}
+
+
+/* Premium Hero & Profile Styles */
+.hero-header {
+    margin-bottom: 1rem;
+}
+
+/* Scroll CTA below Profile */
+.scroll-cta {
+    margin-top: 1rem;
+    /* Increased slightly for breathing room */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    font-family: var(--font-heading);
+}
+
+.scroll-cta:hover {
+    color: var(--primary-color);
+}
+
+.scroll-cta .iconify {
+    font-size: 1.2rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-5px);
+    }
+
+    60% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Reduced Title Size */
+/* We will target inline style in HTML, but here is a backup */
+.hero-header h1 {
+    font-size: 2.5rem !important;
+}
+
+/* Main Hero Layout */
+.hero-main-layout {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    /* Left Content (Wide), Right Photo (Narrow) */
+    gap: 1.5rem;
+    /* Reduced gap */
+    align-items: start;
+    margin-bottom: 0.5rem;
+}
+
+/* Left Column Group */
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    /* Tighter vertical stacking */
+}
+
+/* Inner Top Row (About & Tech) */
+.hero-left-top {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    /* Give Tech more space */
+    /* Side by side */
+    gap: 0.8rem;
+    /* Reduced gap */
+}
+
+/* Reusing .info-card for all blocks now */
+.info-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.8rem;
+    /* Reduced padding */
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, border-color 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(74, 144, 226, 0.4);
+}
+
+/* Rounded Soft Skills Tags */
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: flex-start;
+    margin-top: 0.5rem;
+}
+
+.skill-tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-tag:hover {
+    background: rgba(74, 144, 226, 0.1);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.1);
+}
+
+/* Photo Column */
+.photo-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    margin-top: 1rem;
+    /* Slight adjustment to align visually if needed */
+}
+
+.photo-wrapper {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Align image to bottom if cut off, or center */
+    margin-bottom: 1.5rem;
+}
+
+/* Modern Backdrop for Transparent PNG */
+.photo-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* White to Blue gradient, adjusted opacity for contrast */
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.5) 0%, rgba(74, 144, 226, 0.4) 60%, transparent 100%);
+    border-radius: 50%;
+    /* Circle backdrop */
+    z-index: -1;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 50px rgba(74, 144, 226, 0.3);
+    animation: pulse-glow 4s infinite alternate;
+}
+
+/* Decorative "Pedestal" Bottom Bar */
+.photo-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Matches photo width */
+    height: 2px;
+    /* Thinner line */
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    border-radius: 1px;
+    box-shadow: 0 -1px 8px var(--primary-color);
+    z-index: 2;
+}
+
+/* Additional decorative shape */
+.photo-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 0px;
+    /* Connect to bottom */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+    border-radius: 300px 300px 20px 20px;
+    /* Arch shape with flat bottom */
+    backdrop-filter: blur(5px);
+    z-index: -1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtle bottom rim */
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Or contain depending on the PNG cropping */
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    transition: transform 0.5s ease;
+    border-radius: 0;
+    /* No border radius on the image itself if it's a cutout */
+    background: transparent;
+    /* Ensure transparent bg */
+    border: none;
+    box-shadow: none;
+    animation: float 6s ease-in-out infinite;
+
+    /* Mask the bottom slightly to blend the "cut" */
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+.profile-photo:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: none;
+    border: none;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff 0%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.5px;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Soft Skills Row */
+.hero-bottom-row {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2rem;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    /* Centered tags */
+}
+
+/* Tech Grid adjustment for column */
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* 5 Columns (5x3 layout for 15 items) */
+    gap: 0.8rem;
+    /* Tight grid */
+    padding: 0.5rem 0;
+}
+
+.tech-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3rem;
+    /* Reduced padding to give more room for icon */
+    background: #ffffff;
+    border-radius: 8px;
+    /* Smaller radius */
+    font-size: 2rem;
+    /* Reduced from 3rem to fit */
+    /* Significantly larger for Iconify */
+    transition: all 0.3s ease;
+    aspect-ratio: 1/1;
+    /* Square icons */
+    /* Larger icons */
+    color: #333;
+    border: 1px solid var(--surface-border);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    /* Ensure images stay inside border radius */
+}
+
+/* Specific Logo Resizing */
+.tech-item[title="GitHub"] .iconify,
+.tech-item[title="Jupyter Notebook"] .iconify,
+.tech-item[title="Microsoft Excel"] .iconify,
+.tech-item[title="Microsoft Word"] .iconify {
+    font-size: 2.4rem;
+    /* Increase from base 2rem */
+    transform: scale(1.15);
+}
+
+/* Style for custom PNG icons */
+.tech-item img {
+    width: 85%;
+    /* Larger image size */
+    height: 85%;
+    object-fit: contain;
+}
+
+.tech-item:hover {
+    background: #ffffff;
+    transform: translateY(-5px) scale(1.1);
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    color: var(--primary-color);
+    /* Change text/icon color on hover if needed */
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes pulse-glow {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1100px) {
+    .hero-main-layout {
+        grid-template-columns: 1fr;
+        /* Stack main columns */
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .hero-left-top {
+        grid-template-columns: 1fr;
+        /* Stack About and Tech */
+    }
+
+    .info-card {
+        text-align: left;
+    }
+
+    .photo-col {
+        grid-row: 1;
+        /* Photo on top */
+        margin-bottom: 2rem;
+    }
+
+    .hero-header {
+        text-align: center !important;
+    }
+
+    .skill-tags {
+        justify-content: center;
+    }
+}
+
+/* Enhanced About Grid */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Finer border */
+    padding: 1.5rem;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, border-color 0.3s;
+    height: 100%;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(74, 144, 226, 0.4);
+}
+
+/* Tablet & Mobile Responsiveness */
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        /* Stack on mobile */
+        text-align: left;
+    }
+
+    /* Soft Skills Styles (Restored) */
+
+    .skill-tag {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--surface-border);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        transition: all var(--transition-speed);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-tag:hover {
+        border-color: var(--primary-color);
+        background: rgba(74, 144, 226, 0.1);
+        transform: translateY(-2px);
+    }
+
+    /* Tech Grid */
+    .tech-stack {
+        justify-content: center;
+    }
+}
+
+/* Initial Projects Header (Keeping for legacy if needed, but overriding with new style) */
+.projects-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title-gradient {
+    font-family: var(--font-body);
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+    /* Increased from 1.1 to prevent clipping */
+    margin-bottom: 3rem;
+    padding-bottom: 0.5rem;
+    /* Added padding for descenders */
+    text-align: center;
+    background: linear-gradient(135deg, #fff 0%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.5px;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    /* Hide filters if user wanted to remove them entirely, but keeping for standard projects might be good.
+       User said "gajadi ada tag" for featured. I'll keep filters for the regular grid. */
+}
+
+/* =========================================
+   Unified Modern Projects Layout
+   ========================================= */
+
+.project-layout-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    padding-bottom: 4rem;
+}
+
+.project-item {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    /* Media wider */
+    gap: 3rem;
+    align-items: stretch;
+    /* Makes both columns equal height */
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+/* Media Column */
+.media-grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 100%;
+    height: 100%;
+    /* Fill parent container height */
+    min-height: 450px;
+    /* Prevent too short appearance */
+}
+
+.media-grid-2x2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Lightbox Modal */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+#lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+#lightbox.active img {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.lightbox-close:hover {
+    color: var(--primary-color);
+}
+
+/* New 2x2 Grid Layout for Multiple Images */
+.media-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+    height: 100%;
+}
+
+.media-grid-2x2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Custom 3-Image Grid (Project 5) */
+.media-grid-3-span {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+    height: 100%;
+    gap: 2px;
+}
+
+.media-grid-3-span img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Image 2: Left column, full height */
+.media-grid-3-span img:nth-child(2) {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+}
+
+/* Image 1: Right column, top */
+.media-grid-3-span img:nth-child(1) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+/* Image 3: Right column, bottom */
+.media-grid-3-span img:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/* Project Media Container - ensures it fills grid cell */
+.project-media {
+    width: 100%;
+    height: 100%;
+    max-height: 550px;
+    /* Constrain height to match Projects 1 & 2 */
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    background: #000;
+}
+
+.media-grid-2x2 img:hover {
+    transform: scale(1.05);
+    z-index: 2;
+    position: relative;
+}
+
+.static-image {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-color: #2a2a2a;
+    transition: transform 0.5s ease;
+}
+
+.project-subtitle {
+    margin-top: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-family: var(--font-body);
+    /* Changed to sans-serif */
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.project-item:hover .static-image {
+    transform: scale(1.02);
+}
+
+/* Content Column */
+.project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 0;
+    /* CRITICAL: Prevents Grid blowout */
+}
+
+.project-heading {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.project-tech {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+.project-description {
+    font-size: 1.05rem;
+    color: #e0e0e0;
+    line-height: 1.7;
+}
+
+/* Meta Grid (Goal, Method, Year) */
+.project-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--surface-border);
+    border-radius: 12px;
+}
+
+.meta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 0.8rem;
+}
+
+.meta-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.meta-label {
+    font-weight: 500;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.meta-value {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    text-align: right;
+}
+
+/* Actions */
+.project-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* Reusing Carousel Logic but updated sizing */
+.carousel-container {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    background: #000;
+    overflow-x: auto;
+    /* Manual scroll allowed */
+    scrollbar-width: none;
+    border-radius: var(--border-radius);
+    display: flex;
+    /* Direct flex container for images */
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Images directly in container */
+.carousel-container img {
+    height: 100%;
+    width: 100%;
+    flex: 0 0 100%;
+    /* 100% of container width */
+    object-fit: contain;
+    /* Changed to contain to ensure full image visibility without cropping, per safe default. Can be cover if preferred. */
+    background: #000;
+    scroll-snap-align: start;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+    .project-item {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .project-heading {
+        font-size: 2rem;
+    }
+}
+
+/* Standard Projects Grid */
+.section-subtitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 4rem 0 2rem;
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--surface-color);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: all var(--transition-speed);
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(74, 144, 226, 0.4);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+    padding: 1.5rem;
+}
+
+.project-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.project-results {
+    list-style-position: inside;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.project-tools {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    border-top: 1px solid var(--surface-border);
+    padding-top: 0.8rem;
+}
+
+/* Accordion/Expanded State */
+/* Separator line */
+.project-details {
+    padding: 1.5rem;
+    border-top: 1px solid var(--surface-border);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+
+
+.detail-row {
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.detail-label {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.link-btn {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 2px;
+    transition: opacity 0.3s;
+}
+
+.link-btn:hover {
+    opacity: 0.8;
+}
+
+/* Contact */
+.contact {
+    text-align: center;
+    background: linear-gradient(180deg, transparent 0%, rgba(74, 144, 226, 0.05) 100%);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--surface-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    backdrop-filter: blur(10px);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(74, 144, 226, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.contact-icon {
+    font-size: 2rem;
+    margin-right: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    width: 48px;
+    height: 48px;
+}
+
+.contact-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.contact-info h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.contact-info span {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    transition: color 0.3s;
+}
+
+.contact-card:hover .contact-info span {
+    color: var(--primary-color);
+}
+
+.footer {
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--surface-border);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .nav-links {
+        display: none;
+        /* Mobile menu implementation needed if complex, but for sticky simple nav this might be ok to just scale down or hide */
+    }
+
+    /* Simple mobile nav for now */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-color);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--surface-border);
+        display: none;
+    }
+
+    .nav-content:hover .nav-links {
+        display: flex;
+        /* Hover to show on mobile for MVP, or JS toggle */
+    }
+}
+
+/* =========================================
+   Infographic Flip Card Styles
+   ========================================= */
+
+.infographic-card {
+    background-color: transparent !important;
+    /* Allow flip visibility */
+    perspective: 1000px;
+    height: 100%;
+    /* Ensure it takes height */
+    min-height: 350px;
+    /* Match typical card height */
+    border: none !important;
+    /* Border moved to faces */
+    overflow: visible !important;
+    /* Allow 3D overflow */
+    cursor: default;
+    /* Default cursor for container */
+}
+
+/* Override standard project-card hover for this specific card container */
+.infographic-card:hover {
+    transform: none;
+    /* Disable standard lift on container itself, handle in inner if needed */
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+}
+
+/* Logic for "Flipped" state (Triggered by JS) */
+.infographic-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: var(--border-radius);
+    background: var(--surface-color);
+    border: 1px solid var(--surface-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+/* Re-apply standard card styling to faces */
+.flip-card-front {
+    background: rgba(255, 255, 255, 0.05);
+    /* Slightly lighter to match standard cards */
+    backdrop-filter: blur(10px);
+    /* Ensure consistency */
+    display: block;
+    /* Restore block layout for content */
+    text-align: left;
+}
+
+.flip-card-back {
+    background-color: #000;
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    /* Centering image */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Image on Back */
+.infographic-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Show full image preview */
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.infographic-img:hover {
+    transform: scale(1.05);
+}
+
+.flip-hint {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    pointer-events: none;
+}
+
+/* Hover effect on the flip trigger */
+.flip-trigger {
+    color: var(--primary-color) !important;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.flip-trigger:hover {
+    text-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+}
+
+/* PDF Lightbox Styles */
+#lightbox-pdf {
+    width: 80%;
+    height: 90%;
+    max-width: 1200px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+    animation: zoomIn 0.3s ease;
+}
+
+/* Media Overlay for Interaction Hint */
+/* Media Overlay for Interaction Hint (Badge Style) */
+.media-overlay {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: auto;
+    height: auto;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 30px;
+    color: white;
+    opacity: 1;
+    /* Always visible */
+    pointer-events: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease, transform 0.3s ease;
+    z-index: 2;
+}
+
+.pdf-lightbox-trigger:hover .media-overlay {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+    color: white;
+}
